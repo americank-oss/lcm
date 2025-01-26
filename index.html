@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100px; /* Altura del header */
+      background: none; /* Sin color de fondo */
+    }
+
+    header img {
+      width: 100%; /* El logo ocupa todo el header */
+      height: 100%;
+      object-fit: cover; /* Ajuste del logo sin deformarse */
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]::placeholder, input[type="password"]::placeholder {
+      color: #888;
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .keyboard button {
+      padding: 20px;
+      font-size: 18px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .keyboard button:hover {
+      background-color: #ddd;
+    }
+
+    /* Botón "0" al centro */
+    .keyboard .center {
+      grid-column: span 3; /* El "0" ocupa toda la última fila */
+      text-align: center;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    /* Alineación de botones */
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: rgb(244, 10, 10);
+    }
+    .app{
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        height: 150px; /* Menor altura para pantallas pequeñas */
+      }
+
+      .container {
+        padding: 15px;
+        max-width: 90%;
+      }
+
+      .keyboard {
+        grid-template-columns: repeat(3, 1fr); /* Mantener 3 botones por fila */
+      }
+
+      .keyboard button {
+        padding: 15px;
+        font-size: 16px;
+      }
+
+      footer {
+        position: static;
+        padding: 20px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .keyboard button {
+        padding: 12px;
+        font-size: 14px;
+      }
+      
+      header img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header con logo -->
+  <header>
+    <img src="logoprinde.svg" alt="Company Logo">
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password (numbers only):</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" pattern="\d*" required>
+      </div>
+
+      <!-- Number Keyboard -->
+      <div class="keyboard">
+        <button type="button" onclick="addToPassword('1')">1</button>
+        <button type="button" onclick="addToPassword('2')">2</button>
+        <button type="button" onclick="addToPassword('3')">3</button>
+        <button type="button" onclick="addToPassword('4')">4</button>
+        <button type="button" onclick="addToPassword('5')">5</button>
+        <button type="button" onclick="addToPassword('6')">6</button>
+        <button type="button" onclick="addToPassword('7')">7</button>
+        <button type="button" onclick="addToPassword('8')">8</button>
+        <button type="button" onclick="addToPassword('9')">9</button>
+        <button type="button" class="center" onclick="addToPassword('0')">0</button> <!-- 0 en el centro -->
+      </div>
+
+      <div class="error-message" id="error-message"></div>
+      
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Image Container -->
+    <div class="image-container">
+      <img src="logo.svg" alt="Placeholder Image">
+    </div>
+    <button class="app">get the app </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Your Company. All Rights Reserved. Locations  Contact Us Help & Support Browse with Specialist Accessible Privacy Children’s Privacy  Security</p>
+  </footer>
+
+  <script>
+    function addToPassword(number) {
+  // Obtener el campo de entrada de la contraseña
+  const passwordField = document.getElementById('password');
+  
+  // Añadir el número al valor actual del campo de la contraseña
+  passwordField.value += number;
+}
+   // Predefined users for validation
+const users = [
+  { 
+    username: "john_doe", 
+    password: "123456", 
+    fullName: "John Doe",
+    accountNumber: "123456789", 
+    balance: "1,250.75",
+    notifications: [
+      "Welcome to your new account, John!",
+      "Your account has been successfully updated."
+    ]
+  },
+  { 
+    username: "alice_smith", 
+    password: "789123", 
+    fullName: "Alice Smith",
+    accountNumber: "987654321", 
+    balance: "2,540.60",
+    notifications: [
+      "Account created successfully!",
+      "Please review your recent transactions."
+    ]
+  },
+  { 
+    username: "jane_doe", 
+    password: "qwerty123", 
+    fullName: "Jane Doe",
+    accountNumber: "1122334455", 
+    balance: "3,150.30",
+    notifications: [
+      "Your account has been successfully activated.",
+      "New promotional offer available for you."
+    ]
+  },
+  { 
+    username: "bob_johnson", 
+    password: "password123", 
+    fullName: "Bob Johnson",
+    accountNumber: "2233445566", 
+    balance: "500.00",
+    notifications: [
+      "Your last payment was successful.",
+      "Don't forget to check your monthly statement."
+    ]
+  },
+  { 
+    username: "mary_williams", 
+    password: "abc123", 
+    fullName: "Mary Williams",
+    accountNumber: "3344556677", 
+    balance: "8,300.75",
+    notifications: [
+      "Your recent transfer has been processed.",
+      "You are eligible for a new loan offer."
+    ]
+  },
+  { 
+    username: "charles_brown", 
+    password: "charles456", 
+    fullName: "Charles Brown",
+    accountNumber: "4455667788", 
+    balance: "750.40",
+    notifications: [
+      "Your account balance is running low.",
+      "A new update is available for your account."
+    ]
+  },
+  { 
+    username: "susan_clark", 
+    password: "susan789", 
+    fullName: "Susan Clark",
+    accountNumber: "5566778899", 
+    balance: "2,940.00",
+    notifications: [
+      "Your payment has been received.",
+      "Please update your contact details."
+    ]
+  },
+  { 
+    username: "michael_martin", 
+    password: "michael321", 
+    fullName: "Michael Martin",
+    accountNumber: "6677889900", 
+    balance: "1,120.50",
+    notifications: [
+      "Your monthly payment is due in 3 days.",
+      "Thank you for using our services."
+    ]
+  },
+  { 
+    username: "emily_davis", 
+    password: "emily654", 
+    fullName: "Emily Davis",
+    accountNumber: "7788990011", 
+    balance: "4,890.10",
+    notifications: [
+      "Your profile has been successfully updated.",
+      "Reminder: Your bill is due soon."
+    ]
+  },
+  { 
+    username: "david_taylor", 
+    password: "david987", 
+    fullName: "David Taylor",
+    accountNumber: "8899001122", 
+    balance: "3,620.00",
+    notifications: [
+      "Your account is now active.",
+      "You have a new credit card offer."
+    ]
+  }
+];
+
+// Form submission handling
+const form = document.getElementById("loginForm");
+const usernameField = document.getElementById("username");
+const passwordField = document.getElementById("password");
+const errorMessage = document.getElementById("error-message");
+
+// Function to handle the form submission
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  
+  const username = usernameField.value.trim();
+  const password = passwordField.value.trim();
+
+  // Check if user exists and password matches
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    // Store user data in localStorage
+    const userData = {
+      username: user.username,
+      fullName: user.fullName,
+      accountNumber: user.accountNumber,
+      balance: user.balance,
+      notifications: user.notifications
+    };
+    localStorage.setItem("user", JSON.stringify(userData)); // Store the complete user object
+  
+    // Redirect to the welcome page
+    window.location.href = "welcome.html";
+  } else {
+    errorMessage.textContent = "Your username or password is incorrect. Please try again.";
+  }
+});
+
+  </script>
+  
+  
+</body>
+</html>

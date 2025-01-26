@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <style>
+    /* General styles */
+    body {
+      height: 100%; /* Asegura que el contenido ocupe toda la altura de la pantalla */
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      width: 240px;
+      height: auto;
+    }
+
+ 
+.notification {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* No cambiar la posición de la campana en el header */
+.notification-dropdown {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 12px; /* Tamaño más pequeño */
+}
+
+.notification:hover .notification-dropdown {
+  display: block;
+}
+
+.notification-dropdown p {
+  margin: 5px 0;
+  font-size: 12px; /* Texto más pequeño */
+}
+
+
+
+    .logout {
+      font-size: 18px;
+      cursor: pointer;
+      background-color: rgb(162, 4, 4);
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: rgb(85, 3, 3);
+    }
+
+    /* Main container styles */
+    .container {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Saludo y hora */
+    .greeting {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    /* Dropdown styles */
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    /* Container for images and text */
+.image-container {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección de las imágenes a columna */
+  margin-top: 30px;
+}
+
+.image-box {
+  width: 100%; /* Cambié el 48% por 100% para que ocupe toda la anchura */
+  text-align: center;
+  margin-bottom: 20px; /* Agregué espacio entre las imágenes */
+}
+
+.image-box img {
+  width: 80%;
+  border-radius: 8px;
+}
+
+.image-box p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+
+   /* Contenedor principal de la página */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%; /* Asegura que la altura mínima de la página ocupe toda la ventana */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aquí dejamos el footer en su lugar normal */
+footer {
+  background-color: #f1f1f1; 
+  padding: 3px;
+  padding: 10px 0; /* Espaciado superior e inferior */
+  display: flex; /* Para alinear las secciones en fila */
+  justify-content: space-around; /* Centra las secciones horizontalmente */
+  gap: 10px; /* Espacio entre las secciones */
+  font-size: 12px; /* Tamaño de fuente pequeño */
+  width: 100%; /* Hace que el footer ocupe todo el ancho de la página */
+  color: #555; /* Color del texto */
+  text-align: center; /* Centra el texto e imagen */
+  margin-top: auto; /* Empuja el footer al final del contenido */
+}
+
+.footer-section img {
+  width: 20px; /* Tamaño de las imágenes, ajustable */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin-bottom: 1px; /* Espaciado entre la imagen y el texto */
+}
+
+.footer-section p {
+  margin: 0; /* Elimina el margen por defecto */
+  line-height: 1.2; /* Espaciado entre líneas del texto */
+}
+
+
+    /* Barra de navegación */
+    .navbar {
+      background-color: #e9e4e4;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar li {
+      float: left;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    .navbar li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .navbar li a:hover {
+      background-color: #d8d2d2;
+    }
+
+    /* Estilos para las secciones de cuenta */
+    .account-details {
+      display: none;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-left: 3px solid #d2cece;
+      margin-top: 10px;
+    }
+
+    .account-details h4 {
+      margin-top: 10px;
+    }
+
+    .account-details ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .account-details ul li {
+      margin: 5px 0;
+    }
+
+    /* Estilo para las secciones activas */
+    .account-link.active + .account-details {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="notification">
+      <span>🔔</span>
+      <div class="notification-dropdown">
+        <!-- Las notificaciones se cargarán aquí -->
+      </div>
+    </div>
+
+    <img src="logoprinde.svg" alt="Company Logo">
+
+    <button class="logout" onclick="logout()">Logout</button>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Saludo según la hora -->
+    <div class="greeting" id="greeting"></div>
+
+    <!-- Información de cuentas -->
+    <nav class="navbar">
+      <ul>
+        <li>
+          <a href="javascript:void(0);" class="account-link" onclick="toggleAccount('savings')">Savings Account</a>
+          <div class="account-details" id="savingsAccount">
+            <p><strong>Balance: $5000</strong></p>
+            <h4>Movements</h4>
+            <ul>
+              <li>Deposit: +$500 - 01/01/2025</li>
+              <li>Withdrawal: -$200 - 05/01/2025</li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" class="account-link" onclick="toggleAccount('checking')">Checking Account</a>
+          <div class="account-details" id="checkingAccount">
+            <p><strong>Balance: $1200</strong></p>
+            <h4>Movements</h4>
+            <ul>
+              <li>Deposit: +$1000 - 02/01/2025</li>
+              <li>Withdrawal: -$300 - 06/01/2025</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Contenedores de imagenes con texto -->
+    <div class="image-container">
+      <div class="image-box">
+        <img src="merrillab.svg" alt="Image 1">
+        <p>
+          Your advisor, your plan, your path forward — take on tomorrow with Merrill.</p>
+      </div>
+      <div class="image-box">
+        <img src="zerrel.jpg" alt="Image 2">
+        <p>Zelle® is a great way to send money to friends and family, even if they bank somewhere different than you do</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-section">
+      <img src="money-send-svgrepo-com.svg" alt="">
+      <p>money transfer</p>
+    </div>
+    <div class="footer-section">
+      <img src="credit-cards-svgrepo-com.svg" alt="">
+      <p>products
+      </p>
+    </div>
+    <div class="footer-section">
+      <img src="cheque-svgrepo-com.svg" alt="">
+      <p>checking</p>
+    </div>
+  </footer>
+  <script>
+   // Función para alternar la visibilidad de los detalles de la cuenta
+function toggleAccount(account) {
+  // Obtener el elemento de detalles de la cuenta
+  const accountDetails = document.getElementById(account + 'Account');
+
+  // Verificar si el contenido ya está visible
+  if (accountDetails.style.display === "block") {
+    // Si está visible, ocultarlo
+    accountDetails.style.display = "none";
+  } else {
+    // Si no está visible, mostrarlo
+    accountDetails.style.display = "block";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Cargar datos del usuario desde LocalStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+  const greetingText = document.getElementById("greeting");
+  const fullNameText = document.getElementById("fullName");
+  const accountNumberText = document.getElementById("accountNumber");
+  const balanceText = document.getElementById("balance");
+  const notificationDropdown = document.querySelector('.notification-dropdown');
+
+  // Verificar que se haya cargado correctamente el usuario
+  if (user) {
+    // Obtener la hora actual y generar el saludo correspondiente
+    const now = new Date();
+    const hours = now.getHours();
+
+    if (hours >= 5 && hours < 12) {
+      greetingText.textContent = `Good Morning, ${user.fullName}!`;
+    } else if (hours >= 12 && hours < 18) {
+      greetingText.textContent = `Good Afternoon, ${user.fullName}!`;
+    } else {
+      greetingText.textContent = `Good Evening, ${user.fullName}!`;
+
+    }
+    // Mostrar las notificaciones
+    loadNotifications(user.notifications);
+
+    // Mostrar los detalles del usuario
+    fullNameText.textContent = `Full Name: ${user.fullName}`;
+    accountNumberText.textContent = `Account Number: ${user.accountNumber}`;
+    balanceText.textContent = `Balance: $${user.balance}`;
+    notificationText.textContent=`Notifications: ${user.notifications}`;
+
+    // Mostrar las notificaciones
+    loadNotifications(user.notifications);
+
+  } else {
+    // Si no se ha encontrado el usuario en localStorage, redirigir al login
+    window.location.href = "login.html";
+  }
+
+  // Función de logout
+  function logout() {
+    localStorage.removeItem("user");  // Eliminar usuario del LocalStorage
+    window.location.href = "login.html";  // Redirigir a la página de login
+  }
+
+  function loadNotifications(notifications) {
+  if (!notificationDropdown) {
+    console.error("No se encontró el contenedor de notificaciones");
+    return; // Si no se encuentra el contenedor, terminamos aquí
+  }
+
+  notificationDropdown.innerHTML = ""; // Limpiar el contenido previo
+
+  // Validar que notifications sea un array
+  if (Array.isArray(notifications) && notifications.length > 0) {
+    notifications.forEach(notification => {
+      const p = document.createElement("p");
+      p.textContent = notification;
+      notificationDropdown.appendChild(p);
+    });
+  } else {
+    const p = document.createElement("p");
+    p.textContent = "No notifications available.";
+    notificationDropdown.appendChild(p);
+  }
+}});
+    
+</script>
+    
+
+</body>
+</html>
+
