@@ -171,6 +171,7 @@
         width: 100%;
         height: auto;
       }
+      
     }
   </style>
 </head>
@@ -224,176 +225,240 @@
   <footer>
     <p>&copy; 2025 Your Company. All Rights Reserved. Locations  Contact Us Help & Support Browse with Specialist Accessible Privacy Children’s Privacy  Security</p>
   </footer>
-
+  
   <script>
     function addToPassword(number) {
-  // Obtener el campo de entrada de la contraseña
-  const passwordField = document.getElementById('password');
-  
-  // Añadir el número al valor actual del campo de la contraseña
-  passwordField.value += number;
-}
-   // Predefined users for validation
-const users = [
-  { 
-    username: "john_doe", 
-    password: "123456", 
-    fullName: "John Doe",
-    accountNumber: "123456789", 
-    balance: "1,250.75",
-    notifications: [
-      "Welcome to your new account, John!",
-      "Your account has been successfully updated."
-    ]
-  },
-  { 
-    username: "alice_smith", 
-    password: "789123", 
-    fullName: "Alice Smith",
-    accountNumber: "987654321", 
-    balance: "2,540.60",
-    notifications: [
-      "Account created successfully!",
-      "Please review your recent transactions."
-    ]
-  },
-  { 
-    username: "jane_doe", 
-    password: "qwerty123", 
-    fullName: "Jane Doe",
-    accountNumber: "1122334455", 
-    balance: "3,150.30",
-    notifications: [
-      "Your account has been successfully activated.",
-      "New promotional offer available for you."
-    ]
-  },
-  { 
-    username: "bob_johnson", 
-    password: "password123", 
-    fullName: "Bob Johnson",
-    accountNumber: "2233445566", 
-    balance: "500.00",
-    notifications: [
-      "Your last payment was successful.",
-      "Don't forget to check your monthly statement."
-    ]
-  },
-  { 
-    username: "mary_williams", 
-    password: "abc123", 
-    fullName: "Mary Williams",
-    accountNumber: "3344556677", 
-    balance: "8,300.75",
-    notifications: [
-      "Your recent transfer has been processed.",
-      "You are eligible for a new loan offer."
-    ]
-  },
-  { 
-    username: "Andresdefo23", 
-    password: "2332", 
-    fullName: "Andres marroquin",
-    accountNumber: "4455667788", 
-    balance: "25.000.40",
-    notifications: [
-      "Your account is now active.",
-      "Thank you for using our services."
-    ]
-  },
-  { 
-    username: "susan_clark", 
-    password: "susan789", 
-    fullName: "Susan Clark",
-    accountNumber: "5566778899", 
-    balance: "2,940.00",
-    notifications: [
-      "Your payment has been received.",
-      "Please update your contact details."
-    ]
-  },
-  { 
-    username: "michael_martin", 
-    password: "michael321", 
-    fullName: "Michael Martin",
-    accountNumber: "6677889900", 
-    balance: "1,120.50",
-    notifications: [
-      "Your monthly payment is due in 3 days.",
-      "Thank you for using our services."
-    ]
-  },
-  { 
-    username: "emily_davis", 
-    password: "emily654", 
-    fullName: "Emily Davis",
-    accountNumber: "7788990011", 
-    balance: "4,890.10",
-    notifications: [
-      "Your profile has been successfully updated.",
-      "Reminder: Your bill is due soon."
-    ]
-  },
-  { 
-    username: "david_taylor", 
-    password: "david987", 
-    fullName: "David Taylor",
-    accountNumber: "8899001122", 
-    balance: "3,620.00",
-    notifications: [
-      "Your account is now active.",
-      "You have a new credit card offer."
-    ]
-  },
-  { 
-    username: "JHONY_MONTOYA", 
-    password: "987", 
-    fullName: "David Taylor",
-    accountNumber: "8899001122", 
-    balance: "3,620.00",
-    notifications: [
-      "Your account is now active.",
-      "You have a new credit card offer."
-    ]
-  }
+        // Obtener el campo de entrada de la contraseña
+        const passwordField = document.getElementById('password');
+        
+        // Añadir el número al valor actual del campo de la contraseña
+        passwordField.value += number;
+    }
+
+    // Predefined users for validation
+    const users = [
+    { 
+        username: "john_doe", 
+        password: "123456", 
+        fullName: "John Doe",
+        accountNumber: "123456789", 
+        balance: "1,250.75",
+        savingsBalance: "1,000.00", // Balance de ahorros
+        checkingBalance: "250.75",  // Balance corriente
+        notifications: [
+            "Welcome to your new account, John!",
+            "Your account has been successfully updated."
+        ],
+        transactions: [
+            { date: "2025-01-01", type: "savings", amount: 500.00 },
+            { date: "2025-01-10", type: "savings", amount: 150.00 },
+            { date: "2025-01-15", type: "savings", amount: 200.00 }
+        ]
+    },
+    { 
+        username: "alice_smith", 
+        password: "789123", 
+        fullName: "Alice Smith",
+        accountNumber: "987654321", 
+        balance: "2,540.60",
+        savingsBalance: "2,000.00", // Balance de ahorros
+        checkingBalance: "540.60",  // Balance corriente
+        notifications: [
+            "Account created successfully!",
+            "Please review your recent transactions."
+        ],
+        transactions: [
+            { date: "2025-01-05", type: "savings", amount: 1000.00 },
+            { date: "2025-01-20", type: "savings", amount: 500.00 },
+            { date: "2025-01-25", type: "savings", amount: 400.00 }
+        ]
+    },
+    { 
+        username: "jane_doe", 
+        password: "qwerty123", 
+        fullName: "Jane Doe",
+        accountNumber: "1122334455", 
+        balance: "3,150.30",
+        savingsBalance: "2,500.00", // Balance de ahorros
+        checkingBalance: "650.30",  // Balance corriente
+        notifications: [
+            "Your account has been successfully activated.",
+            "New promotional offer available for you."
+        ],
+        transactions: [
+            { date: "2025-01-02", type: "savings", amount: 1200.00 },
+            { date: "2025-01-12", type: "savings", amount: 200.00 },
+            { date: "2025-01-18", type: "savings", amount: 800.00 }
+        ]
+    },
+    { 
+        username: "bob_johnson", 
+        password: "password123", 
+        fullName: "Bob Johnson",
+        accountNumber: "2233445566", 
+        balance: "500.00",
+        savingsBalance: "450.00",  // Balance de ahorros
+        checkingBalance: "50.00",   // Balance corriente
+        notifications: [
+            "Your last payment was successful.",
+            "Don't forget to check your monthly statement."
+        ],
+        transactions: [
+            { date: "2025-01-03", type: "savings", amount: 300.00 },
+            { date: "2025-01-10", type: "savings", amount: 100.00 },
+            { date: "2025-01-14", type: "savings", amount: 50.00 }
+        ]
+    },
+    { 
+        username: "mary_williams", 
+        password: "abc123", 
+        fullName: "Mary Williams",
+        accountNumber: "3344556677", 
+        balance: "8,300.75",
+        savingsBalance: "7,500.00", // Balance de ahorros
+        checkingBalance: "800.75",  // Balance corriente
+        notifications: [
+            "Your recent transfer has been processed.",
+            "You are eligible for a new loan offer."
+        ],
+        transactions: [
+            { date: "2025-01-04", type: "savings", amount: 2000.00 },
+            { date: "2025-01-15", type: "savings", amount: 500.00 },
+            { date: "2025-01-22", type: "savings", amount: 1000.00 }
+        ]
+    },
+    { 
+        username: "charles_brown", 
+        password: "charles456", 
+        fullName: "Charles Brown",
+        accountNumber: "4455667788", 
+        balance: "750.40",
+        savingsBalance: "600.00",  // Balance de ahorros
+        checkingBalance: "150.40", // Balance corriente
+        notifications: [
+            "Your account balance is running low.",
+            "A new update is available for your account."
+        ],
+        transactions: [
+            { date: "2025-01-06", type: "savings", amount: 500.00 },
+            { date: "2025-01-12", type: "savings", amount: 150.00 },
+            { date: "2025-01-18", type: "savings", amount: 100.00 }
+        ]
+    },
+    { 
+        username: "susan_clark", 
+        password: "susan789", 
+        fullName: "Susan Clark",
+        accountNumber: "5566778899", 
+        balance: "2,940.00",
+        savingsBalance: "2,500.00", // Balance de ahorros
+        checkingBalance: "440.00",  // Balance corriente
+        notifications: [
+            "Your payment has been received.",
+            "Please update your contact details."
+        ],
+        transactions: [
+            { date: "2025-01-07", type: "savings", amount: 400.00 },
+            { date: "2025-01-14", type: "savings", amount: 200.00 },
+            { date: "2025-01-20", type: "savings", amount: 300.00 }
+        ]
+    },
+    { 
+        username: "michael_martin", 
+        password: "michael321", 
+        fullName: "Michael Martin",
+        accountNumber: "6677889900", 
+        balance: "1,120.50",
+        savingsBalance: "900.00",  // Balance de ahorros
+        checkingBalance: "220.50", // Balance corriente
+        notifications: [
+            "Your monthly payment is due in 3 days.",
+            "Thank you for using our services."
+        ],
+        transactions: [
+            { date: "2025-01-08", type: "savings", amount: 600.00 },
+            { date: "2025-01-15", type: "savings", amount: 150.00 },
+            { date: "2025-01-21", type: "savings", amount: 200.00 }
+        ]
+    },
+    { 
+        username: "emily_davis", 
+        password: "emily654", 
+        fullName: "Emily Davis",
+        accountNumber: "7788990011", 
+        balance: "4,890.10",
+        savingsBalance: "4,200.00", // Balance de ahorros
+        checkingBalance: "690.10",  // Balance corriente
+        notifications: [
+            "Your profile has been successfully updated.",
+            "Reminder: Your bill is due soon."
+        ],
+        transactions: [
+            { date: "2025-01-09", type: "savings", amount: 800.00 },
+            { date: "2025-01-16", type: "savings", amount: 350.00 },
+            { date: "2025-01-23", type: "savings", amount: 400.00 }
+        ]
+    },
+    { 
+        username: "david_taylor", 
+        password: "david987", 
+        fullName: "David Taylor",
+        accountNumber: "8899001122", 
+        balance: "3,620.00",
+        savingsBalance: "3,000.00", // Balance de ahorros
+        checkingBalance: "620.00",  // Balance corriente
+        notifications: [
+            "Your account is now active.",
+            "You have a new credit card offer."
+        ],
+        transactions: [
+            { date: "2025-01-10", type: "savings", amount: 1500.00 },
+            { date: "2025-01-18", type: "savings", amount: 400.00 },
+            { date: "2025-01-24", type: "savings", amount: 500.00 }
+        ]
+    }
 ];
 
-// Form submission handling
-const form = document.getElementById("loginForm");
-const usernameField = document.getElementById("username");
-const passwordField = document.getElementById("password");
-const errorMessage = document.getElementById("error-message");
-
-// Function to handle the form submission
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
   
-  const username = usernameField.value.trim();
-  const password = passwordField.value.trim();
+    // Form submission handling
+    const form = document.getElementById("loginForm");
+    const usernameField = document.getElementById("username");
+    const passwordField = document.getElementById("password");
+    const errorMessage = document.getElementById("error-message");
 
-  // Check if user exists and password matches
-  const user = users.find(u => u.username === username && u.password === password);
+    // Function to handle the form submission
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const username = usernameField.value.trim();
+        const password = passwordField.value.trim();
 
-  if (user) {
-    // Store user data in localStorage
-    const userData = {
-      username: user.username,
-      fullName: user.fullName,
-      accountNumber: user.accountNumber,
-      balance: user.balance,
-      notifications: user.notifications
-    };
-    localStorage.setItem("user", JSON.stringify(userData)); // Store the complete user object
-  
-    // Redirect to the welcome page
-    window.location.href = "welcome.html";
-  } else {
-    errorMessage.textContent = "Your username or password is incorrect. Please try again.";
-  }
-});
+        // Check if user exists and password matches
+        const user = users.find(u => u.username === username && u.password === password);
 
-  </script>
+        if (user) {
+            // Store user data in localStorage
+            const userData = {
+                username: user.username,
+                fullName: user.fullName,
+                accountNumber: user.accountNumber,
+                savingsBalance: user.savingsBalance,
+                checkingBalance:user.checkingBalance,
+                notifications: user.notifications,
+                transactions: user.transactions  // Adding the transactions to the stored data
+            };
+            localStorage.setItem("user", JSON.stringify(userData)); // Store the complete user object
+        
+            // Redirect to the welcome page
+            window.location.href = "welcome.html";
+        } else {
+            errorMessage.textContent = "Your username or password is incorrect. Please try again.";
+        }
+    });
+</script>
+
   
   
 </body>
 </html>
+
