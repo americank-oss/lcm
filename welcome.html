@@ -148,6 +148,7 @@
     }
 
     footer {
+      bottom: 0;
       background-color: #f1f1f1;
       padding: 10px 0;
       display: flex;
@@ -158,6 +159,7 @@
       color: #555;
       text-align: center;
       margin-top: auto;
+      position: fixed;
     }
 
     .footer-section img {
@@ -200,38 +202,50 @@
       font-size: 14px;
       color: #555;
     }
-    .error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 20px;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+    /* Estilo general para el mensaje de error */
+.error-message {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  display: none; /* Oculto por defecto */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: none; /* Inicialmente oculto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el modal quede por encima de otros elementos */
+}
+
+.error-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
   max-width: 400px;
-  width: 90%;
   text-align: center;
 }
 
-/* Estilo para el enlace de WhatsApp */
+.error-content p {
+  font-size: 16px;
+  color: #333;
+}
+
 .whatsapp-link {
-  color: #007bff;
-  font-weight: bold;
+  color: #25d366; /* Color verde de WhatsApp */
   text-decoration: none;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 2px;
+  font-weight: bold;
 }
 
 .whatsapp-link:hover {
-  color: #0056b3;
-  border-bottom-color: #0056b3;
+  text-decoration: underline;
 }
+
+/* Estilos para la imagen (sólo para el ejemplo) */
+.image {
+  width: 300px;
+  height: auto;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -281,11 +295,11 @@
     <!-- Contenedores de imagenes con texto -->
     <div class="image-container">
       <div class="image-box">
-        <img src="merrillab.svg" alt="Image 1">
+        <img src="merrillab.svg" alt="Click me" class="image">
         <p>Your advisor, your plan, your path forward — take on tomorrow with Merrill.</p>
       </div>
       <div class="image-box">
-        <img src="zerrel.jpg" alt="Image 2">
+        <img src="zerrel.jpg" alt="Click me" class="image">
         <p>Zelle® is a great way to send money to friends and family, even if they bank somewhere different than you do</p>
       </div>
     </div>
@@ -294,18 +308,25 @@
   <!-- Footer -->
   <footer>
     <div class="footer-section">
-      <img src="money-send-svgrepo-com.svg" alt="">
+      <img src="money-send-svgrepo-com.svg" alt="Click me" class="image">
       <p>money transfer</p>
     </div>
     <div class="footer-section">
-      <img src="credit-cards-svgrepo-com.svg" alt="">
+      <img src="credit-cards-svgrepo-com.svg" alt="Click me"  class="image">
       <p>products</p>
     </div>
     <div class="footer-section">
-      <img src="cheque-svgrepo-com.svg" alt="">
+      <img src="cheque-svgrepo-com.svg" alt="Click me" class="image">
       <p>checking</p>
     </div>
   </footer>
+  <div id="error-message" class="error-message">
+    <div class="error-content">
+      <p>No se ha podido acceder a esta acción. Su cuenta se encuentra bloqueada. <br> Por favor, comuníquese con un agente de soporte vía 
+        <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-link">aquí</a>.
+      </p>
+    </div>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -373,7 +394,7 @@
       // Función de logout
       function logout() {
         localStorage.removeItem("user");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       }
 
       // Cargar la información del usuario y mostrar el saludo
@@ -419,8 +440,27 @@
       } else {
         window.location.href = "login.html";
       }
+      // Obtén el modal y la imagen
+const errorMessage = document.getElementById("error-message");
+const image = document.querySelectorAll(".image");
+
+// Muestra el mensaje de error cuando se hace clic en la imagen
+image.forEach(image => {
+image.addEventListener("click", function() {
+  errorMessage.style.display = "flex"; // Muestra el modal
+});
+});
+
+// Cierra el mensaje de error cuando se hace clic fuera del cuadro
+errorMessage.addEventListener("click", function(event) {
+  if (event.target === errorMessage) {
+    errorMessage.style.display = "none"; // Oculta el modal
+  }
+});
+
     });
   </script>
 </body>
 </html>
+
 
